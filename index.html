@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beirut Media News — Lebanon &amp; World</title>
+<meta name="description" content="Beirut Media's news desk — Lebanon and world news, politics, technology, weather, and sports.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Markazi+Text:wght@500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#023C58;--navy-deep:#01151F;--gold:#F2C125;--orange:#F89A42;--paper:#F0F0EE;--paper-soft:#E5E4E0;--ink:#0C2733;--on-dark:#F4F2EC;--on-dark-soft:#B9C7CC;--rule:color-mix(in srgb, var(--ink) 14%, transparent);--font-display:'Fraunces', serif;--font-display-ar:'Markazi Text', serif;--font-body:'Work Sans', sans-serif;--font-body-ar:'Tajawal', sans-serif;--font-mono:'IBM Plex Mono', monospace;--edge: 6vw;}
+  *{box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  html[data-lang="ar"] body{font-family:var(--font-body-ar);}
+  img{max-width:100%;display:block;}a{color:inherit;text-decoration:none;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .display{font-family:var(--font-display);font-weight:600;}
+  html[data-lang="ar"] .display{font-family:var(--font-display-ar);font-weight:700;}
+  .wrap{max-width:1180px;margin-inline:auto;padding-inline:var(--edge);}
+  .cat{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.03em;color:var(--orange);}
+  .meta{font-family:var(--font-mono);font-size:.72rem;color:color-mix(in srgb, var(--ink) 55%, transparent);}
+  header{border-block-end:1px solid var(--rule);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding-block:14px;gap:20px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand img{height:30px;width:auto;}
+  .brand span{font-family:var(--font-display);font-weight:600;font-size:1rem;}
+  html[data-lang="ar"] .brand span{font-family:var(--font-display-ar);font-size:1.2rem;}
+  .lang-switch{display:flex;border:1px solid color-mix(in srgb, var(--ink) 25%, transparent);border-radius:999px;overflow:hidden;}
+  .lang-btn{border:0;background:transparent;color:var(--ink);font-family:var(--font-mono);font-size:.78rem;padding:6px 12px;cursor:pointer;}
+  .lang-btn[aria-pressed="true"]{background:var(--navy);color:var(--on-dark);}
+  .cat-nav{border-block-end:1px solid var(--rule);overflow-x:auto;}
+  .cat-nav ul{display:flex;gap:26px;list-style:none;margin:0;padding-block:12px;white-space:nowrap;}
+  .cat-nav a{font-size:.88rem;opacity:.82;}
+  .cat-nav a:hover{opacity:1;color:var(--orange);}
+  .ticker{background:var(--navy-deep);color:var(--on-dark);overflow:hidden;border-block-end:3px solid var(--gold);}
+  .ticker-inner{display:flex;align-items:center;gap:0;padding-block:9px;}
+  .ticker-label{flex:none;font-family:var(--font-mono);font-size:.72rem;background:var(--orange);color:var(--navy-deep);padding:4px 12px;border-radius:999px;margin-inline-end:16px;}
+  .ticker-track{display:flex;gap:44px;white-space:nowrap;}
+  @media (prefers-reduced-motion: no-preference){.ticker-track{animation:scrollTicker 32s linear infinite;}}
+  @keyframes scrollTicker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .ticker-track span{font-size:.85rem;opacity:.92;}
+  .promo{background:linear-gradient(120deg, var(--navy) 0%, var(--navy-deep) 100%);color:var(--on-dark);}
+  .promo .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:26px;flex-wrap:wrap;}
+  .promo-text h2{margin:0 0 6px;font-size:clamp(1.2rem,2.4vw,1.6rem);font-style:italic;font-weight:500;}
+  html[data-lang="ar"] .promo-text h2{font-family:var(--font-display-ar);font-style:normal;}
+  .promo-text p{margin:0;color:var(--on-dark-soft);font-size:.92rem;max-width:46ch;}
+  .btn{display:inline-block;font-size:.95rem;font-weight:500;padding:13px 26px;border-radius:999px;white-space:nowrap;transition:transform .15s,background .15s;}
+  .btn:hover{transform:translateY(-1px);}
+  .btn-solid{background:var(--orange);color:var(--navy-deep);}
+  .btn-solid:hover{background:var(--gold);}
+  section{padding-block:clamp(40px,6vw,64px);}
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-block-end:22px;border-block-end:1px solid var(--rule);padding-block-end:12px;}
+  .section-head h2{margin:0;font-size:clamp(1.2rem,2.4vw,1.5rem);}
+  .lead-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;}
+  @media (max-width:820px){.lead-grid{grid-template-columns:1fr;}}
+  .lead-frame{aspect-ratio:16/9;border-radius:12px;background:var(--paper-soft);border:1.5px dashed color-mix(in srgb, var(--ink) 25%, transparent);display:flex;align-items:center;justify-content:center;margin-block-end:16px;overflow:hidden;}
+  .lead-frame svg{width:34px;height:34px;stroke:color-mix(in srgb, var(--ink) 45%, transparent);}
+  .lead h3{font-size:clamp(1.4rem,3vw,2rem);margin:10px 0 10px;font-family:var(--font-display);font-weight:600;}
+  html[data-lang="ar"] .lead h3{font-family:var(--font-display-ar);font-size:1.7rem;}
+  .lead .dateline{font-family:var(--font-mono);font-size:.85rem;opacity:.7;}
+  .lead p{opacity:.82;max-width:58ch;margin:8px 0 0;}
+  .side-list{display:flex;flex-direction:column;gap:20px;}
+  .side-item{padding-block-end:18px;border-block-end:1px solid var(--rule);}
+  .side-item:last-child{border-block-end:0;}
+  .side-item h4{margin:6px 0 4px;font-size:1.02rem;font-weight:600;}
+  .story-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:760px){.story-row{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--rule);border-radius:12px;padding:18px;background:var(--paper-soft);}
+  .card .frame{aspect-ratio:16/10;border-radius:8px;background:var(--paper);border:1.5px dashed color-mix(in srgb, var(--ink) 22%, transparent);display:flex;align-items:center;justify-content:center;margin-block-end:14px;overflow:hidden;}
+  .card .frame svg{width:24px;height:24px;stroke:color-mix(in srgb, var(--ink) 45%, transparent);}
+  .card h4{margin:8px 0 6px;font-size:1.05rem;}
+  .card p{margin:0;font-size:.88rem;opacity:.75;}
+  .weather-card{display:flex;align-items:center;gap:28px;border:1px solid var(--rule);border-radius:14px;padding:26px;background:var(--paper-soft);flex-wrap:wrap;}
+  .weather-card svg{width:52px;height:52px;stroke:var(--orange);flex:none;}
+  .weather-temp{font-family:var(--font-display);font-size:2.6rem;font-weight:600;}
+  .weather-note{font-size:.85rem;opacity:.7;max-width:40ch;}
+  footer{background:var(--navy-deep);color:var(--on-dark-soft);padding-block:26px;margin-block-start:20px;}
+  .foot-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;}
+  .foot-brand{display:flex;align-items:center;gap:10px;}
+  .foot-brand img{height:20px;opacity:.9;}
+  .update-bar{background:color-mix(in srgb, var(--gold) 12%, transparent);border-block-end:1px solid color-mix(in srgb, var(--gold) 30%, transparent);padding:6px var(--edge);font-family:var(--font-mono);font-size:.75rem;color:var(--ink);opacity:.8;}
+</style>
+</head>
+<body>
+
+<div class="update-bar" data-en="Last updated: الأربعاء، ٩ أيلول ٢٠٢٦" data-ar="آخر تحديث: الأربعاء، ٩ أيلول ٢٠٢٦">Last updated: الأربعاء، ٩ أيلول ٢٠٢٦</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img src="data:image/png;base64,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" alt="Beirut Media" style="height:32px;width:auto;" />
+      <span data-en="Beirut Media News" data-ar="بيروت ميديا نيوز">Beirut Media News</span>
+    </a>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+      <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+    </div>
+  </div>
+  <nav class="cat-nav">
+    <div class="wrap">
+      <ul>
+        <li><a href="#lebanon" data-en="Lebanon" data-ar="لبنان">Lebanon</a></li>
+        <li><a href="#world" data-en="World" data-ar="العالم">World</a></li>
+        <li><a href="#politics" data-en="Politics" data-ar="سياسة">Politics</a></li>
+        <li><a href="#tech" data-en="Technology" data-ar="تكنولوجيا">Technology</a></li>
+        <li><a href="#weather" data-en="Weather" data-ar="الطقس">Weather</a></li>
+        <li><a href="#sports" data-en="Sports" data-ar="رياضة">Sports</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="ticker">
+  <div class="wrap ticker-inner">
+    
+    <div class="ticker-track">
+      <span data-en="Aoun questions whether Israel really wants peace, says Israeli pretexts 'flimsy'" data-ar="قصف وتحركات لدبابات إسرائيلية بجنوب لبنان وعون يتمسك بالتفاوض">Aoun questions whether Israel really wants peace, says Israeli pretexts 'flimsy'</span><span data-en="US forces and Iran attack oil tankers as oil heads to $100" data-ar="إسرائيل تستخدمه ويحرق حتى العظم.. كيف أفلت الفوسفور الأبيض من الحظر؟">US forces and Iran attack oil tankers as oil heads to $100</span><span data-en="Suspected smugglers on trial over deadliest migrant tragedy in France" data-ar="نقل الغاز من الأردن إلى لبنان عبر سوريا.. كيف تتجاوز مكاسب دمشق عوائد العبور؟">Suspected smugglers on trial over deadliest migrant tragedy in France</span><span data-en="Why US-Iran war over Hormuz is threatening the Gulf's waters" data-ar="3 أبعاد لحديث كاتس عن السيطرة على 'علي الطاهر'">Why US-Iran war over Hormuz is threatening the Gulf's waters</span><span data-en="Shelton shocks Alcaraz in all-time classic US Open quarterfinal" data-ar="شيلتون يصدم ألكاراز في ربع نهائي أسطوري ببطولة أميركا المفتوحة">Shelton shocks Alcaraz in all-time classic US Open quarterfinal</span><span data-en="Aoun questions whether Israel really wants peace, says Israeli pretexts 'flimsy'" data-ar="قصف وتحركات لدبابات إسرائيلية بجنوب لبنان وعون يتمسك بالتفاوض">Aoun questions whether Israel really wants peace, says Israeli pretexts 'flimsy'</span><span data-en="US forces and Iran attack oil tankers as oil heads to $100" data-ar="إسرائيل تستخدمه ويحرق حتى العظم.. كيف أفلت الفوسفور الأبيض من الحظر؟">US forces and Iran attack oil tankers as oil heads to $100</span><span data-en="Suspected smugglers on trial over deadliest migrant tragedy in France" data-ar="نقل الغاز من الأردن إلى لبنان عبر سوريا.. كيف تتجاوز مكاسب دمشق عوائد العبور؟">Suspected smugglers on trial over deadliest migrant tragedy in France</span><span data-en="Why US-Iran war over Hormuz is threatening the Gulf's waters" data-ar="3 أبعاد لحديث كاتس عن السيطرة على 'علي الطاهر'">Why US-Iran war over Hormuz is threatening the Gulf's waters</span><span data-en="Shelton shocks Alcaraz in all-time classic US Open quarterfinal" data-ar="شيلتون يصدم ألكاراز في ربع نهائي أسطوري ببطولة أميركا المفتوحة">Shelton shocks Alcaraz in all-time classic US Open quarterfinal</span>
+    </div>
+  </div>
+</div>
+
+<section class="promo">
+  <div class="wrap">
+    <div class="promo-text">
+      <h2 class="display" data-en="This is Beirut Media's news desk." data-ar="هيدا قسم الأخبار تبع بيروت ميديا.">This is Beirut Media's news desk.</h2>
+      <p data-en="To visit our filming, editing, animation, AI content, and equipment rental department, press the yellow button." data-ar="لزيارة قسم التصوير، المونتاج، الأنيميشن، المحتوى بالذكاء الاصطناعي، وتأجير المعدات، اضغط الزر الأصفر.">To visit our filming, editing, animation, AI content, and equipment rental department, press the yellow button.</p>
+    </div>
+    <a class="btn btn-solid" href="/productions/" data-en="Visit Beirut Media Productions" data-ar="زور بيروت ميديا للإنتاج">Visit Beirut Media Productions</a>
+  </div>
+</section>
+
+<main id="top">
+  <section id="lebanon">
+    <div class="wrap">
+      <div class="lead-grid">
+        <div class="lead">
+          <div class="lead-frame"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="LEBANON" data-ar="لبنان">LEBANON</span>
+          <h3 class="clickable" style="cursor:pointer" 
+            data-title-en="Aoun questions whether Israel really wants peace, says Israeli pretexts 'flimsy'"
+            data-title-ar="قصف وتحركات لدبابات إسرائيلية بجنوب لبنان وعون يتمسك بالتفاوض"
+            data-snippet-en="President Joseph Aoun has condemned Israel's repeated attacks on Lebanon, accusing it of violating the U.S.-brokered framework deal."
+            data-snippet-ar="استمرار القصف الإسرائيلي وتحركات للدبابات في جنوب لبنان، فيما يتمسك الرئيس جوزاف عون بمسار التفاوض لحل الأزمة."
+            data-img=""
+            data-link="https://www.aljazeera.net/news/2026/9/9/"
+            data-cat-en="LEBANON"
+            data-cat-ar="لبنان"
+            onclick="openArticle(this)"
+            data-en="Aoun questions whether Israel really wants peace, says Israeli pretexts 'flimsy'" 
+            data-ar="قصف وتحركات لدبابات إسرائيلية بجنوب لبنان وعون يتمسك بالتفاوض">Aoun questions whether Israel really wants peace, says Israeli pretexts 'flimsy'</h3>
+          <p class="dateline" data-en="BEIRUT — " data-ar="بيروت — ">BEIRUT — </p>
+          <p data-en="President Joseph Aoun has condemned Israel's repeated attacks on Lebanon, accusing it of violating the U.S.-brokered framework deal." data-ar="استمرار القصف الإسرائيلي وتحركات للدبابات في جنوب لبنان، فيما يتمسك الرئيس جوزاف عون بمسار التفاوض لحل الأزمة.">President Joseph Aoun has condemned Israel's repeated attacks on Lebanon, accusing it of violating the U.S.-brokered framework deal.</p>
+        </div>
+        <div class="side-list">
+          <div class="side-item">
+            <span class="meta" data-en="WORLD" data-ar="العالم">WORLD</span>
+            <h4 data-en="US forces and Iran attack oil tankers as oil heads to $100" data-ar="إسرائيل تستخدمه ويحرق حتى العظم.. كيف أفلت الفوسفور الأبيض من الحظر؟">US forces and Iran attack oil tankers as oil heads to $100</h4>
+            <p class="meta" data-en="US strikes five Iranian oil tankers; Tehran retaliates with attacks on a US base" data-ar="تقرير عن استخدام الفوسفور الأبيض في جنوب لبنان وكيف تفلت هذه الأسلحة من الحظر ال">US strikes five Iranian oil tankers; Tehran retaliates with attacks on a US base</p>
+          </div><div class="side-item">
+            <span class="meta" data-en="POLITICS" data-ar="سياسة">POLITICS</span>
+            <h4 data-en="Why US-Iran war over Hormuz is threatening the Gulf's waters" data-ar="3 أبعاد لحديث كاتس عن السيطرة على 'علي الطاهر'">Why US-Iran war over Hormuz is threatening the Gulf's waters</h4>
+            <p class="meta" data-en="An explainer on how the escalating US-Iran conflict is putting shipping lanes in" data-ar="تصريحات وزير الدفاع الإسرائيلي حول السيطرة على تلة علي الطاهر ترسم واقعا أمنيا ج">An explainer on how the escalating US-Iran conflict is putting shipping lanes in</p>
+          </div><div class="side-item">
+            <span class="meta" data-en="TECH" data-ar="تكنولوجيا">TECH</span>
+            <h4 data-en="AI researcher quits Anthropic saying AI race 'could kill us all'" data-ar="هل اكتشف العلماء جسيم المادة المظلمة؟">AI researcher quits Anthropic saying AI race 'could kill us all'</h4>
+            <p class="meta" data-en="An AI researcher warns the industry is racing towards superintelligent AI that c" data-ar="تقرير علمي حول اكتشاف محتمل يتعلق بجسيمات المادة المظلمة الغامضة في الكون.">An AI researcher warns the industry is racing towards superintelligent AI that c</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="politics">
+    <div class="wrap">
+      <div class="section-head"><h2 data-en="Politics" data-ar="سياسة">Politics</h2></div>
+      <div class="story-row">
+        
+        <div class="card clickable" 
+          data-title-en="Why US-Iran war over Hormuz is threatening the Gulf's waters"
+          data-title-ar="3 أبعاد لحديث كاتس عن السيطرة على 'علي الطاهر'"
+          data-snippet-en="An explainer on how the escalating US-Iran conflict is putting shipping lanes in the Strait of Hormuz at risk."
+          data-snippet-ar="تصريحات وزير الدفاع الإسرائيلي حول السيطرة على تلة علي الطاهر ترسم واقعا أمنيا جديدا في جنوب لبنان."
+          data-img=""
+          data-link="https://www.aljazeera.net/politics/2026/9/7/"
+          data-cat-en="POLITICS"
+          data-cat-ar="سياسة"
+          onclick="openArticle(this)">
+          <div class="frame" style="padding:0;overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="POLITICS" data-ar="سياسة">POLITICS</span>
+          <h4 data-en="Why US-Iran war over Hormuz is threatening the Gulf's waters" data-ar="3 أبعاد لحديث كاتس عن السيطرة على 'علي الطاهر'">Why US-Iran war over Hormuz is threatening the Gulf's waters</h4>
+          <p data-en="An explainer on how the escalating US-Iran conflict is putting shipping lanes in the Strait of Hormuz at risk." data-ar="تصريحات وزير الدفاع الإسرائيلي حول السيطرة على تلة علي الطاهر ترسم واقعا أمنيا جديدا في جنوب لبنان.">An explainer on how the escalating US-Iran conflict is putting shipping lanes in the Strait of Hormuz at risk.</p>
+        </div>
+        
+        <div class="card clickable" 
+          data-title-en="Medicine shortages grow in Iran as US tightens sanctions, blockade"
+          data-title-ar="من سيملأ الفراغ؟.. سيناريوهات ما بعد اليونيفيل في جنوب لبنان"
+          data-snippet-en="Pharmaceutical shortages are worsening in Iran as Washington tightens its sanctions regime."
+          data-snippet-ar="تساؤلات حول مستقبل جنوب لبنان الأمني بعد انتهاء مهمة القوات الدولية العاملة هناك."
+          data-img=""
+          data-link="https://www.aljazeera.net/news/2026/9/8/"
+          data-cat-en="POLITICS"
+          data-cat-ar="سياسة"
+          onclick="openArticle(this)">
+          <div class="frame" style="padding:0;overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="POLITICS" data-ar="سياسة">POLITICS</span>
+          <h4 data-en="Medicine shortages grow in Iran as US tightens sanctions, blockade" data-ar="من سيملأ الفراغ؟.. سيناريوهات ما بعد اليونيفيل في جنوب لبنان">Medicine shortages grow in Iran as US tightens sanctions, blockade</h4>
+          <p data-en="Pharmaceutical shortages are worsening in Iran as Washington tightens its sanctions regime." data-ar="تساؤلات حول مستقبل جنوب لبنان الأمني بعد انتهاء مهمة القوات الدولية العاملة هناك.">Pharmaceutical shortages are worsening in Iran as Washington tightens its sanctions regime.</p>
+        </div>
+        
+        <div class="card clickable" 
+          data-title-en="Yemen's war is back: A new battle for Sanaa and the Red Sea"
+          data-title-ar="لا يستهدف الانتخابات فقط.. 'التوحش' في لبنان محل إجماع إسرائيلي"
+          data-snippet-en="Renewed fighting between Saudi-backed forces and Houthis raises fears of a protracted new conflict."
+          data-snippet-ar="تحليل حول التصعيد الإسرائيلي في جنوب لبنان وأبعاده السياسية والانتخابية."
+          data-img=""
+          data-link="https://www.aljazeera.net/politics/2026/9/7/"
+          data-cat-en="POLITICS"
+          data-cat-ar="سياسة"
+          onclick="openArticle(this)">
+          <div class="frame" style="padding:0;overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="POLITICS" data-ar="سياسة">POLITICS</span>
+          <h4 data-en="Yemen's war is back: A new battle for Sanaa and the Red Sea" data-ar="لا يستهدف الانتخابات فقط.. 'التوحش' في لبنان محل إجماع إسرائيلي">Yemen's war is back: A new battle for Sanaa and the Red Sea</h4>
+          <p data-en="Renewed fighting between Saudi-backed forces and Houthis raises fears of a protracted new conflict." data-ar="تحليل حول التصعيد الإسرائيلي في جنوب لبنان وأبعاده السياسية والانتخابية.">Renewed fighting between Saudi-backed forces and Houthis raises fears of a protracted new conflict.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tech">
+    <div class="wrap">
+      <div class="section-head"><h2 data-en="Technology" data-ar="تكنولوجيا">Technology</h2></div>
+      <div class="story-row">
+        
+        <div class="card clickable" 
+          data-title-en="AI researcher quits Anthropic saying AI race 'could kill us all'"
+          data-title-ar="هل اكتشف العلماء جسيم المادة المظلمة؟"
+          data-snippet-en="An AI researcher warns the industry is racing towards superintelligent AI that could improve itself beyond human control."
+          data-snippet-ar="تقرير علمي حول اكتشاف محتمل يتعلق بجسيمات المادة المظلمة الغامضة في الكون."
+          data-img=""
+          data-link="https://www.aljazeera.com/features/2026/9/5/"
+          data-cat-en="TECH"
+          data-cat-ar="تكنولوجيا"
+          onclick="openArticle(this)">
+          <div class="frame" style="padding:0;overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="TECH" data-ar="تكنولوجيا">TECH</span>
+          <h4 data-en="AI researcher quits Anthropic saying AI race 'could kill us all'" data-ar="هل اكتشف العلماء جسيم المادة المظلمة؟">AI researcher quits Anthropic saying AI race 'could kill us all'</h4>
+          <p data-en="An AI researcher warns the industry is racing towards superintelligent AI that could improve itself beyond human control." data-ar="تقرير علمي حول اكتشاف محتمل يتعلق بجسيمات المادة المظلمة الغامضة في الكون.">An AI researcher warns the industry is racing towards superintelligent AI that could improve itself beyond human control.</p>
+        </div>
+        
+        <div class="card clickable" 
+          data-title-en="NASA launches $4.3bn Roman Telescope to uncover universe's hidden secrets"
+          data-title-ar="سباق الذكاء الاصطناعي بين الصين وأميركا يصل إلى القاهرة"
+          data-snippet-en="A SpaceX Falcon Heavy rocket propelled the telescope on a mission to investigate dark energy and dark matter."
+          data-snippet-ar="مصر أمام قرار استراتيجي مع وصول التنافس الأميركي الصيني على الذكاء الاصطناعي إلى المنطقة."
+          data-img=""
+          data-link="https://www.aljazeera.com/news/2026/9/4/"
+          data-cat-en="TECH"
+          data-cat-ar="تكنولوجيا"
+          onclick="openArticle(this)">
+          <div class="frame" style="padding:0;overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="TECH" data-ar="تكنولوجيا">TECH</span>
+          <h4 data-en="NASA launches $4.3bn Roman Telescope to uncover universe's hidden secrets" data-ar="سباق الذكاء الاصطناعي بين الصين وأميركا يصل إلى القاهرة">NASA launches $4.3bn Roman Telescope to uncover universe's hidden secrets</h4>
+          <p data-en="A SpaceX Falcon Heavy rocket propelled the telescope on a mission to investigate dark energy and dark matter." data-ar="مصر أمام قرار استراتيجي مع وصول التنافس الأميركي الصيني على الذكاء الاصطناعي إلى المنطقة.">A SpaceX Falcon Heavy rocket propelled the telescope on a mission to investigate dark energy and dark matter.</p>
+        </div>
+        
+        <div class="card clickable" 
+          data-title-en="US pushes looser approach to AI regulation, while EU pushes new law"
+          data-title-ar="هل يمكن أن يتعايش طموح كينيا بالذكاء الاصطناعي مع احتياجات نايفاشا من المياه؟"
+          data-snippet-en="Washington and Brussels are diverging sharply on how to regulate artificial intelligence."
+          data-snippet-ar="مخاوف من الضغط المتزايد على الموارد المائية مع سعي كينيا لجذب استثمارات مراكز البيانات."
+          data-img=""
+          data-link="https://www.aljazeera.com/economy/2026/8/24/"
+          data-cat-en="TECH"
+          data-cat-ar="تكنولوجيا"
+          onclick="openArticle(this)">
+          <div class="frame" style="padding:0;overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="TECH" data-ar="تكنولوجيا">TECH</span>
+          <h4 data-en="US pushes looser approach to AI regulation, while EU pushes new law" data-ar="هل يمكن أن يتعايش طموح كينيا بالذكاء الاصطناعي مع احتياجات نايفاشا من المياه؟">US pushes looser approach to AI regulation, while EU pushes new law</h4>
+          <p data-en="Washington and Brussels are diverging sharply on how to regulate artificial intelligence." data-ar="مخاوف من الضغط المتزايد على الموارد المائية مع سعي كينيا لجذب استثمارات مراكز البيانات.">Washington and Brussels are diverging sharply on how to regulate artificial intelligence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="weather">
+    <div class="wrap">
+      <div class="section-head"><h2 data-en="Weather" data-ar="الطقس">Weather</h2></div>
+      <div class="weather-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M6.5 18a4 4 0 0 1-.5-8 5 5 0 0 1 9.6-1.8A4.5 4.5 0 0 1 18 17.9"/></svg>
+        <div>
+          <span class="meta" data-en="BEIRUT — TODAY" data-ar="بيروت — اليوم">BEIRUT — TODAY</span>
+          <div class="weather-temp">24°C</div>
+          <div class="weather-note" data-en="Clear skies tonight, around 24°C. Today's high 30°C, low 23°C, no rain expected." data-ar="سماء صافية الليلة، بحدود 24 درجة مئوية. أعلى درجة اليوم 30 والدنيا 23، بدون احتمال هطول أمطار.">Clear skies tonight, around 24°C. Today's high 30°C, low 23°C, no rain expected.</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="sports">
+    <div class="wrap">
+      <div class="section-head"><h2 data-en="Sports" data-ar="رياضة">Sports</h2></div>
+      <div class="story-row">
+        
+        <div class="card clickable" 
+          data-title-en="Shelton shocks Alcaraz in all-time classic US Open quarterfinal"
+          data-title-ar="شيلتون يصدم ألكاراز في ربع نهائي أسطوري ببطولة أميركا المفتوحة"
+          data-snippet-en="Shelton comes through in a five-set epic against defending champion Alcaraz at the US Open."
+          data-snippet-ar="فاز الأميركي بن شيلتون على المصنف الأول ألكاراز في مباراة من خمس مجموعات ضمن بطولة أميركا المفتوحة للتنس."
+          data-img=""
+          data-link="https://www.aljazeera.net/sport/"
+          data-cat-en="SPORTS"
+          data-cat-ar="رياضة"
+          onclick="openArticle(this)">
+          <div class="frame" style="padding:0;overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="SPORTS" data-ar="رياضة">SPORTS</span>
+          <h4 data-en="Shelton shocks Alcaraz in all-time classic US Open quarterfinal" data-ar="شيلتون يصدم ألكاراز في ربع نهائي أسطوري ببطولة أميركا المفتوحة">Shelton shocks Alcaraz in all-time classic US Open quarterfinal</h4>
+          <p data-en="Shelton comes through in a five-set epic against defending champion Alcaraz at the US Open." data-ar="فاز الأميركي بن شيلتون على المصنف الأول ألكاراز في مباراة من خمس مجموعات ضمن بطولة أميركا المفتوحة للتنس.">Shelton comes through in a five-set epic against defending champion Alcaraz at the US Open.</p>
+        </div>
+        
+        <div class="card clickable" 
+          data-title-en="Real Madrid beat Inter Milan as Mbappe goal sets Mourinho's men on way"
+          data-title-ar="ريال مدريد يتغلب على إنتر ميلان بهدف مبابي في دوري أبطال أوروبا"
+          data-snippet-en="Kylian Mbappe opens the scoring as Real Madrid win 2-1 against Inter Milan in the Champions League."
+          data-snippet-ar="سجل كيليان مبابي هدف الافتتاح في فوز ريال مدريد 2-1 على إنتر ميلان بدوري أبطال أوروبا."
+          data-img=""
+          data-link="https://www.aljazeera.net/sport/"
+          data-cat-en="SPORTS"
+          data-cat-ar="رياضة"
+          onclick="openArticle(this)">
+          <div class="frame" style="padding:0;overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="SPORTS" data-ar="رياضة">SPORTS</span>
+          <h4 data-en="Real Madrid beat Inter Milan as Mbappe goal sets Mourinho's men on way" data-ar="ريال مدريد يتغلب على إنتر ميلان بهدف مبابي في دوري أبطال أوروبا">Real Madrid beat Inter Milan as Mbappe goal sets Mourinho's men on way</h4>
+          <p data-en="Kylian Mbappe opens the scoring as Real Madrid win 2-1 against Inter Milan in the Champions League." data-ar="سجل كيليان مبابي هدف الافتتاح في فوز ريال مدريد 2-1 على إنتر ميلان بدوري أبطال أوروبا.">Kylian Mbappe opens the scoring as Real Madrid win 2-1 against Inter Milan in the Champions League.</p>
+        </div>
+        
+        <div class="card clickable" 
+          data-title-en="Haaland to the double as Manchester City beat Porto in Champions League"
+          data-title-ar="مانشستر سيتي يهزم بورتو بثنائية لهالاند في دوري الأبطال"
+          data-snippet-en="Erling Haaland stars with two goals in Manchester City's 2-0 win over Porto."
+          data-snippet-ar="سجل إيرلينغ هالاند هدفين ليقود مانشستر سيتي للفوز 2-0 على بورتو في دوري أبطال أوروبا."
+          data-img=""
+          data-link="https://www.aljazeera.net/sport/"
+          data-cat-en="SPORTS"
+          data-cat-ar="رياضة"
+          onclick="openArticle(this)">
+          <div class="frame" style="padding:0;overflow:hidden;"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+          <span class="cat" data-en="SPORTS" data-ar="رياضة">SPORTS</span>
+          <h4 data-en="Haaland to the double as Manchester City beat Porto in Champions League" data-ar="مانشستر سيتي يهزم بورتو بثنائية لهالاند في دوري الأبطال">Haaland to the double as Manchester City beat Porto in Champions League</h4>
+          <p data-en="Erling Haaland stars with two goals in Manchester City's 2-0 win over Porto." data-ar="سجل إيرلينغ هالاند هدفين ليقود مانشستر سيتي للفوز 2-0 على بورتو في دوري أبطال أوروبا.">Erling Haaland stars with two goals in Manchester City's 2-0 win over Porto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="foot-brand">
+      <span data-en="Beirut Media News — Beirut, Lebanon" data-ar="بيروت ميديا نيوز — بيروت، لبنان">Beirut Media News — Beirut, Lebanon</span>
+    </div>
+    <a href="/productions/" data-en="Beirut Media Productions" data-ar="بيروت ميديا للإنتاج">Beirut Media Productions</a>
+  </div>
+</footer>
+
+
+<!-- Article Modal -->
+<div class="article-modal" id="articleModal">
+  <div class="article-header">
+    <button class="article-back" onclick="closeArticle()">← <span data-en="Back" data-ar="رجوع">Back</span></button>
+    <div class="brand" style="gap:8px;">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABkCAYAAABNcPQyAAArQklEQVR42u2deXxU1d3/P99zzr2zZEJEFhF3QBRcUILKEpxEURFxQZ0IKLW2PqK2T9unT3fbDuliH2uX59f1h621al3IaN1wX5JRRFGjVgVFcQeUVUhmvfec8/39cWfCBJGyhBj9cV4vXkAymcy97/vdv+d7gM/CSiQkdq8dWrRL3z2ZFGhqsqLuvMtYOUfC9y1A2/I7GSTWCfDzRupHkE5lyu+1G9n2LbVL333JEirRaiQnXA8mgMQ28QURmBnC0HuYML3JNjX9bTfk7V+iR34L8wb4RQ3tF+EX9b//42l4RQ3fMwD2hxu6luqmX42mJrtbXfdGwARZ0hYKtF1/JKyx8Is+OaFviQnnfRmplNkNubcB3qmHgwTAEtq3AP4H8Qv3QCpld7n/sBtwj1IWsJbhhPoLP38aAEY8vluKPz+Ay54XmAWN243t8wm4FNbRHruxfX4B7167Ae9euwHvBrx77Qa8e30+ADNAvDup8PkBzAzBLVDcDFmKS5iCGBTMEC0tUNwCxQzJDMG8G35vXqoCLAEgIlgAthI4ACYCb/69itdItIJQD1t6ze7VmwAzg4iCTNGGtn5jHNdONZpqraV9NrShCgxseJZyBFpHRMuFwOsELNa+fbXPsWvfIoLuArwFCmvA9YtXU/qzdT9ok2X6nAAuq9g1C/pVh6r5T0rggkhYwWjAGIBtcN2CCFIAQhBABGuAjBE689ygt9qfEW1SUquEeSJc++Gr1FAGXi+4Ja3kj7n3qvFEQmL1akI6bSrAEhIJgdWrCQMHcqm4wZ9VCSbMAeTpfGv1HnLKR6vZFArMxAhIotMCI/C3OLhQJhJEynHE8JBLw0E0oyMD0/7Mvi9L0EPEfO+i3N+foQYUMFZ6QvVGaU0SUk2mC2wASKUMUinT5dXJpEBrq0C63gKfnaYDAoC1z+55Ur8a+dBHG9gnIkUAoVPoSn9v4f/MxKXvWAaBQCoaEnBcgldkFH1aVu3q24f9aMwJb2+sPobgWd62lo4tufMajqtYezfxglsvQDyukE7rnbju4EGdMP0kEmI6gY8E8x6l729k0HsgvCSIFhkbeg4LrltTQVsgsYQ+C5KtSgq4AUSWACIu90x9MtiyVAfiTQSQoOB1nMszowDLFjLkiGGIqe+OOjCPN5+uglMFYT79Z18AsKhN1FDUuYaEbAQRYG2goACACERUC9A0ZguBwnqum7GIiO61QjyIdNMypCqkvheDVgAgGNWwFFz4NoDd9PUgiNpkYCkAzhAEQr4IG9nI1vchQb0inCIkk8DD71cLUXgIyjkWXrFke1l0dbEC7QSwgBB7klCnguhUof0CT5z5mGC6zqz37kYq5VWANr0yDiaINaBSPoNpE8zy/62oiIYp+DEWoE64BLDY9LOlfxMLAZAi6iWxciIh0NRkSWSvh+McC6/ogSCD9iASQUcgCRCJLl9nZmjfwPc0wGEScgorkRL9nOfF8TMvwciEi1TKIJkU6GVJIQEA1uBFq0uRbiXYMjRsH9jyA0JlaeBeAVcilTJiQuMXSIWnwS/4ILjbLPll4EAJtm9AdBiEmiv6Oc/KuhlnlTo+uTf1jAkAkEI92dGBdkeQZEu8oxJbCXYT3F7xUAcO0aREDUhcBeNbAHKH3yuALWG1he8ZEB3JUt1BE2fOw7HT9kUqZRCP94q4QTBD1hy3ch0xza+KKgBkdkZiqWyvrSjB7QUr6N9iURCXQoUGwVqLHfXmu7IOVLnRFto3JFWjCEWelRPOOxvptO4NKlt0eoNMvysUOPjQOw224pq6OcchCMTN26kC0+mg1ZbxRVjN3f7klW22X9QABrFyb6eJ03/eqbKR/NSedEGNMM3NkDXjVizKF+j+miop2MJ0C1im7rW/BJgiedQYeKvbBDqQIsYqMRxEw2ENBQ7VrjAEpGBNIM0q9AOqmzEPwyaHgsTIpwNZdLl9Vn6/UISRQgAseGfAlmwwA9DMO49ZCpY2Z3nGmPZ6fuGQBNJpTY0pw0mIUkFky6u1NfAzDB0K6Qgwdm0o0ynNBZ8ct1EM6nsf4onYpwVZAEBjIww3Q+w58Z1/FQv4Y3W1kpbJ7ChYAsFaYkFEiCnlOqVSxk7dNxB8pn2q9YGwbnP24aMWFB4edRo1BRUsbk5ITn4yaIYdWNr31kM+PTnwCz6Uc4Iw6l7UTo0CTdzTNnnTDUnAMkPsQeEfdmzgdyOukGzJ0naCBQjWgkMukRDkI2v+smRF6F8iTLB2J0uJAlibJYuMNa4SE0KOmO89ctT93oOjJlBjylATLHNC9p4aNTnQRR/KPZ6i1bcjkRBIJHrU8RIVEsJIgahuaYf1+WIpBEkBC95GsCV7yxbsKAFmsdbzZZzGLrvk1Q8jb8HtzF3v1PINAUwymzU2k7PWceRklnJB4ZGj/9E+/+gRRClDBG5p6RqmEMTqUp2Eeh5ywSflTqYPxDWlEEr2vAQDoEYYbomrPRrefqQjY6+OVStlLeltAdvpBTGZSESSV7BX9jvplaeYE1K4xukuxVjWJERCEAmRyVrjecwhV53vuuK5/IO1V7ffd9SAhoagEDF3ZoYAwLBcAuPb0ka4npdkv+iTE/6SGJ/4L6TTuqfi5I/brPq0YYbsu/rN72c22gU1MamshanMO38MbNkRs4F06YKFkrSQGUJRynSH5G62jAXZ4JOQJCbqaNfG+IiGI/JbISlf9B4cfTk3Q86e3ea3JOMqedLyNwEsgZC8yx2tT8r7+56GdH6F8TPGIZ3WPZHxEltwZgKl3AhTNDyjUOBVYVdItrBblljR9WsEJiIYcHhXtO8QESHqyIgjhLVs2AZmRJKQzMzZdl8TY7ATUn/0qsc8nb9n9CkNTWnd1JTWEWmvJamo3MbQ49k0tgJEQgi+ASddUFWplHpOggPIlpsh+zcsW54vciMRjJLEbMEfl9jNftjCSleCrTyauvHTG0tGRgUeeaPqHhTMf1rGm9VVjoyGhABgmG1Q7gQpz2POtGvjKhrjhuQDhfuPuWX1bccdnE03/6/1ii/LUMgBs9/ziEnAaA0nNIxy/pWlvc6ixwFX2uM9T3zj8VyOZ0cjUhLI8OYSu3lig4jYZ8DgHEbQodcdxSRmMEvCB1m5geL/+sNbb1Qd5RXNxb7ll6qqpIy6UjDDsCVLRCSIZCZvbb7ANuSK6dUR+zw/NOZbo6t5mt9hX5XhsEPgoJGAUW5O4h6ALOF7hoT8KsZPH7OrN7Rv9emhhrTmlrjqO+n1azMb+aexGqVo8yd/s/IiMclsztpQSExYfvfh4wyDJHH3XAADUkJxS1wd/tX6XOiUtmtDbqzWy/MsbfBiVZWSkZAQlmGsJRYgQQyR6dAGFjEo5+rnvv3W9Y/OfO9//I9wg7FKq3BIQSkJkkH4wjBg6F0Im8AMCCkE+LcAgJEj+VMBXIJsuCWuqie9+uPMBvPXWI1ymOF/vG5cuiWlVp6QIyiquGnnUxybWwAIakjreLJVcHNCUkNah6Y8948nn646xivwFw3T4ljMkWGHiC1rZrAgIY0BZzf6mn054YQRhb/xL5dkzj44k/DW8Q+ENa0CZiVABsqRcFwFElRyxngXIJbQvoHj1snx08/YlbNHtgj4ubm1Ds/dO9qZ9qlPG25OyOoTX/2P7EZ7R3UfJ4DcCbbsYVO5BiWzGWP26OOcxC8Prfc3OmuU7CZrXEpipJcMZGpMGQaIW+KqoSmtQ1OevX7FB5Exfl5/1TLeq+rjKikFWWYTGA+hcnljMzlIwLn89vNX/ob/8tIb+olbGvQT5+w/oIpHkfETrL25AK+C48pSQ/Eu8rqZmTgJJAVSKe4RwMyg2tltOhcVe66fO6Sm09omUpaTEO+sw/R8xjxc3Uc51kATaNPelgrYzES+D8b68J/79/eGGo9B1P3tswQwlWJebh7pHnRRuuCe9twf8xw6ysvbnwii9liVI5mJrWVLICEIyLZr4xfUQdgQSxXuHvcwz//F8FUP3rrYLrj1Nlpw66WW9RHQ/hUA1sFxZbdLM0FCawvljpZ1S08GsEuk+JPCJERDKz4Ihf2Dee7eUSJ0Jv8Ob1zifZRZf1YuY5/o00cpa1l3tcWd4YzI55kAceivTltVZ/IWUnT7Zjd6JTnSzd9ywIFrbxzWhxqXeADA9w0L7TF1wUeh0xYl854e7Rft9SFHUCyiBDMMmFgQSd+3nG33TMihSZ4Nt2XuGPuDcxMJ1wJQC1Nr7IJbrrRWj2ajm+G4slMEulmMLfM3dpUt3qoXnfOjSwvRUB0nocBAkOuF2OeMD3K5Dv+0QtYurK5Wyppyo3vZJgeethJAe0bwhaPX8yXj18PLKCjZfdfAAA7DEm2l8aOkz8zfNPTijpsP2oumLCt2gj677U136qIv+hb1WuPJqpgjHUlkbaC2BUhms9oYbSNVVfLn/7jg/dZsavwYbYHa2kscsTD1Hj9x83nQ3tcgRND1y90EmSBhfBCJE1F33vCgfty9FSfxSWqPGTTg4qUdrOSruWEHnE4E5iQEUQB5wFlLO7Je/tRizj5ZXeMoa6Ert6oRA8QEIQRlC4r+z2kfom54Fl5OQgnuPvXcBFvVuHxF9IJ3bjSE5YrUrwvNw3/MzUNqaMqyIjOIm0e60TOeTjunPzWxkNeXg7CqKuZIBqxltkQkrQVnN2rtSjlOObyw8M+xyV9NXcqWgWQyHrYLbv09aTsNJHwIwd0myQwD5SgBmgEAiLeKnpHgEtDojDffZ/C7uZsOSlBTkAApQ+4/ZVn72xnv1ELWpqv7OIoN6zJYhgCXnC5rCQLAvMYVGDLAg1cUkKIbJZlBzKDYzDcfCNfwl0GktRN6SN99+DdBIGpc4vFztQ43J0TkzEV/9jNidLFgrguHhIiElGALTQh2auTy2hifnVDUmVN3lP9Etvm42qamdGFkIuHywlvvtlo3ggQBopviZhawFmA+B8mkKG2h6aE4uAQ0Nuu95wXbTPGmgxLUCNOShCpDHnHW0o71b6kpxax9IFbjKsvkc2UvNRMEAXlPYFBM486Zy9GvysL3BWQ3PaulflBmhqApy4rhxNIrdUHMBNNEPf/Il/T8oxI0ps2nxpTh+yaHqmYuXBk+8+kv5Yt8qjG8uKraUcRga2EJQjKIc+2+VkqMdRz5ZOG2Cd9bkkp5gW2edxes/haUI8HdkIolErCaIcRhaHnjMABc6kLpoTg4aAaQ4Qvevd8HxbI3HnRuQxM0t2yCvM/sttwrb8sz8hl7e6zGcdhCd2a7GIAlOIKRKQocMSiPO2cuR0wxtA7gd1+SKLjh3BJXkRmL31RnvjyNDDcx0S/1fbWPFW8/8nCa8kCn2o6d8/QDa1Z5x3o5fZVUgqvCSjCzJg5Snrm8McZHKBSRvyjePuGx9pvGHaoB0IJ5vxG6cH8JsukWNS0dIaydBKCzC6VHAFdCjp3/1nUkaGj25iHTqKECchKi9pI2HT3l+XPzHebaWB9HwQatOsGm40CTKWK0ZxXqDsji9hkrEKJgB6Po5uCJGtI6gJiQ6syXU6uXi8OY7WsyFlrk33/M1YvnjHSocYnHr4x095ndlgud/fT3TNEer419PhpzFDOYGZY4sM25Dl+7jmgIh8WibHPdJQaAzqrLJOsiiKgbVDWBGQyuBwAMHMg9CrgTMkNEz3/rKjDGZ28aelYAOa6oqSQ5SYjo5OcvzmzUv6yqVkoKWGtLHVmlGFkJYGNO4eSDM7ht+gqEiALI3RxAESFIhDQn5D6z23LOaS9cbrP2FBJ0+qHjq1/354+dRIcHYdXr9w0LRac//eTb760e7+XNLxwlEHFlIM2EwDZntWGDPtGImJtpnpDi51vW+BvpZ8J1d77Pi5jABsQYjfiF4dIWGOpRwJ3+TBIiOni/75PA6QHkIF9NBMYcMDcnZPXU57+by/rfDIeEVEIErToVMbIjgI1ZhdMO6cAdM1YgIgDtU7fZ5K4PZsowB9ku9+y2BfKUZ0YQ4yYK4QHz0Li/vvfrsZHhU5YVX79vWGj415cVQ+cs/EHR0ycYy69Gqx0FZmMtmIikNszZDt9URdW5uHPICw82rnlH5/w1QpLcOSmmwNEiGgyTGwIASCZ7HnAZIjWkdaSgv0LA+YUS5Ofm1gatdY0pyy1xVTXlhd9mc2aGVOSFXSG0BVeGUQ4xNmYVJh+cwfzzV2AP18L3qFu96y7S3JDWpQiA5eRFV9gMH8eEcYNHiaXe/HHHD5+yrMjNCcnP1TrVMxa1bviIj/Nz9ppIRElHleJmIhJCyFy7r42Rw08+NHPD1KHZsCkKkjtbMivZYcnykO60w2JHbhYnIeiidwsdTugiFnRx7qZhiTGz23yeW+uUU4fcElfVp79wayFvTrag1X0iYK2xSV2DAknOKTQclMNDs1ZgcMzAL4hui5O3ZGZQluZpi9rUSU8dJplvkFH5iP/Q+CupMWVoTJvPzSPdARcv7HATC2bn83oGiNZVVTmSLetgGD2pbNFYENGskflqtt0yh4iDJxEH92g16RPDpyTEXo1LMlmNmRC4NHfL0FlUglx2dJqTI90+Z73w+Pg/7bvwhVXVok+Vtr6taAMoSXJ7TuKYwQU89oXlGDHAh5eXuwwyyg9gaUIQnfTUD01W1wklzjWPHP9k5vaJe5fj5pZkXEWnP3VrLmOP84u2NVrtKAastWBFJIxHPGZAAVVVBtp0j9FkxoGfOuBKyP1nLWuPaEwj0CX5m4ddWgm5cclhhhmi7cOwarhuP9y9pAY1VQbGAlxRalQEtOclhu/po+XCFYgflIeX3aWQQQRLBOaWuHJPf/oZ8ecFIyzbl8I19C++f+IpNKbNr68PQq49vrjwzZ8vXnCilzdXRUNKuEoQ2BrfgvarNhhao8GGtu24ka0n5gDiQd3pSe+Uni9DplnL2sPSPRWCZuXmDf8uzW7zuSWu4qtXExGsE7G8URPOvGUwrn68P6rDwVYEU5ELcgSQLQr0CxncP2MlLji6A15WoTTzZdeBbkhrbk5ISsE4Jy24TLL9klV0jX7g+CuoIa3REJRK58wBhxoXfK9Y1OeQ4PXRiJK+gXYUY0gfg1LH2s6n5EB9AQCpkZ8+4C6QG5dkwnnvRAKdnp93yFXUkNYzZ2aIAdIGUJKhHMZ3HhiAL90VPKRRh2HKrfUMSAKKOig/3njmh0iesA66GDiYchd2LlXWlemkBfNFhzOawOPN/cf/Hc0JQY0pg1RCcEtchWc8+c9cwY73NbdVx1wFsB4YMeWDYrojN11qxmvqHYC7QL7o3UKYlsYZfEyh+dDrZs9u8wXAUsAN0q2AG9W47tk+mPSPffHeRhfVYRs0s5dsclmyM0WBOfXrcNO0VagSgO/RrlXZZdvcnJB09qPr5OQnThPMr9jYqhv5wXEDqTFl0Jq2nIyrmlkLl675KHd8Nmf+gZijYg53Q1a6M47s1ppwt8lFGTIaYaPnvX4CMfrl5o14gAHooshJEdwDbQlulcHC98KYcN0+eOjNKvSJahgL2NJ9CuYMENqzEjOP6EDrBStxaH8fXk7CFVbuytmZnXFzc0LSlCd+ZQi/t+z+Nz9cN4SaYDEnbZiTYp/ZbbnY+Y/PgtZXkJRFoHdO+OtWxUdNQY8yJyFC5712Bltaw3cd3No/zH38IkFJSyhBdsIWH+QkTr15b1y9oB9iYQslApVdbrB3BNCRlajdq4gnZ62gaSMzKG5UMQFwcuTqXQe5nAVriSv31Mefas/jF9oXozLz44NKF8rMoHgyruj0hVde+3LoHlGlhDbQO/FbyzqgEPyVpF4HuDIZws2QVTOWzIKlBc98+fUTh/XJWi/nCKekZo0FlGKQYnznoX6YfvveyPoS1a4NQo5SvKxEoK6rHaZ/nrUSf5m2duiPkRRNTWnNyV27/SMIp5Ki77T0BmfK43dUhZx8EKoG1as06i0nITYURd+KeRc7l5ImdAR8u8307KJgE6C2ubVqzOw2/96rxv5p7BDvssbUvvrRZX2UG/NhbNAbRACkYHg5iRF7efj71DU4dt88MnkJUVLXYMAygcA2GiXhedSSy/pf7vuFZ97mlrhCfdp0d/fm5s7tFt4/+GTxC8PSFN5kIQfDmh0fDdE56K14Ey+Yt7OD3nadBFc6LWNujjEzxGnXjHjxS/cdiLsSb+LS49bA63BAFFSROu1y1ODVdQ7iNw3Gn57dA7FQSWWbIFYOmpZJdHSAXVc0VMXUomzzuHOpIa2Jghz4rlTZ5Ye284vlHQlcHMEk94a13E1zP5b3Whv8sTVwIBPB9h3S/v5di/ug7saDac7ED/D709+HLkhosyn3rC1BOQwPjK/c1x8X3LUXOnyJWMhCm4pChQTlMtqQpQHRkEoVU+N/v2JubbRsM3epyq70lVcHPoAwmAypuq21loiWfXYAl4L1jzoib7jhvH7xwyp55F8O5Yn7ZdDyhWWolgy/uCljVU7pOlGLm16KYcKNg/H4exFURzW4oguKiGTRZ87ntHEjzlcH9Is+lb11wtjOOjD3wKiEdGtp8BnPgDXY6cEuxALWwBq7tNdksv79KgXr7cX3tMEKJ8pYXZA8+tpDsCansPiy1zBqYAFeVkEJ7pwQaizgRi2Wrlc4cd4gXLlgT4QdRkgy/JKcCAKBhMx1+NoRONKR9ERh3oQfpRohiJrsLpXmREICxHjstUlQzhEw2u7kYBcGCSGszg5w7BuBcKTsZwBwaerbkpTHoBcNSyjJDGXR2HwQ5rb1x1NfegNfGP0RvIxTBldS2YByGCwYV7T0xeTmQXi73UF11MIEjfUlo0gqWzBWa1ahiPOTaYmJ6czN446mhrRm7MDIpe25eRZzNgtxdvQuWQgJ7dOLa9KpD5NBdPBZkOBNtooI6WBfajAw0Yn6+HnLICRuOxB/OHU5/nzm+zC+gPapi8oGAml++O0Ixt64N254qQ9iIQtHMLQtX4QQYOJch6eVogmukk8Vbqm7ojUZl8Eknrjqtrkd8bhCKmXE+PO+CCc0DlqbnZ0aIAUEF9h+9ejCEL7r2LFNTUG59bMBuL7eIkjzPFoeocAMGCa4MR/3Lu2DUXOHY+L+WTx/yTIc0EfDy3VV2doCTthinSdw4T39ccE9A7C+IFEdLnnZHESQgkjl89pYjVAoqn42foR5MnfDxPHU1E2ediIhkU5rjJt5AKT8Tel6xM6rORCzpXMPKu6NQvShNf+3/sRyTb33Aw6mvRFOPOQVsH0VQhI42GEfhEcab290MOqa4Xh5VRivXP46EkdshJcJxnqU96wZC0jJcCIWN70Sw3E37Y27Xo8iFjFQwkLb8ug2Ia0F5zt87Sp5rHLxRPHWib9e31xbE6Qhk2Jr45Y+eSVFsLUkIYW0t0LIvrC802ORBAHaAPv2NXRE37z1i1RdUyXuzVwTn9odkHtmMFc8LtHUZBn0TwgJgDodiHJ4xNLiwtv2x9fvH4wbpr2PuWetgDAE39vU4cFccsAiFu92SJx150DMfrA/2ivCKebylHJSubyxWoPcsPpmjKvaijcf30jUZIO8+Xao7URCAk2MpiZLdeoGKHcstG+6Y6CLIAC+wJT9itizyopC0Vo2HAqF5R3Za4+ftrOQewZwSU2zoZuhfb35jSmHR27Mx9+e2xOj5w5D3QFZvHL5mxi1VxFeJqgLd3HAFEO5Ftc8X42xNw/CPcuiQT6buCTNBCISDFCuw9cSNNR1xTzvlvjdxX8cf0RZbbdsPd1JZZuLyZNdqpsxj5QzE76nu2taj2EAijFzWB5sCJJIGG2tMSxDjkq1z514TrnnrVelKj+u4ZLBMO4JjQ+SCp0EveWRRkpwaWsL4XeTP8DFtRtwxaMD8asF/QFl4Tqb1HHwesDzCbCEi4/I4OcTNmBgzCBTCAa4i9IEbGZYMDgSVdL3TIGYf5dbX/hlzX8+uw4I5l6WZ2CWwMrOVOHx540QLP8GqcaW4HaLAyQp6CYdM8jDwrPWwdebasrMsEIQSSnYK/rnVl3y+B3cElflrbK9D3BpILesmz6Zpbp/a96nCE75gM1JTB3ZgevOXoElq8P4wj8H4911LlRUA6BOL7tTsgsCB/TV+OXEDWg8JAujCXlfQImSK8MAMxtBJEMxBT9v3gfEz598na9taEprTkLgsAR1go5fGBbsfwWMJISo7g6PeXPAfp7s30/eIC4ckUWmUPqspdIwM1shBUkpTLGgz4rNbr13eyH38NS3IMMk6l5bBOnUQutPHEzWWYTIS/SrMrj2zA8waVgW37x/L1zzTF/A2Yo0G8J5h+bwiwkbcFBfH/m8gK1w2BhgMJuQI5UISeiCaQPTT50LWu8CgCEnTRu4wg+f62t8FcoZAeMHrXbdOKVWBNLLR+9t6YnTVrEikOWPt/0ws5VSkJDwCjkzufqydCsn44qatg1yzwIuS/H4GVPYUfdui6MiBcPXBBQlLqzdgN9PXYVFyyP48p2D8N46FypqusTMZZXsFwT6xQyajmvHpUd0QJbKjlJsumhrwWC20YiSIILx/Icveazvmr8tiZ0C5fRTSoOMNiYoInTrvVIEeEWBHx27ccFPxmbqMrmypvn4sszWUUIQUXum6DX0nf3E85uZlE++fz0KeMkSRiIh+cF5r9O+h06EcofCWrO1WJKZIASgXIvn343i+pdqcPohWfzy5DXY6EkseicCy4CjGMzU2XatXEZGE+5bFkXryhBG9NUY0k8DhuCX9kMFp+eQ8DVb37ccCjnDzhiqjziqfzG6op3NO+slrCUpg5Es3VePZBiWioj0y1OGmBNH13hnR8KqvzbWbqk3kyhovHeUjCghz/jmifv+M/Kl+9c3NydkKrWEP30vektPpcU3YI2/LSN+g/CI4FZprMxKnPr3/fCVewbhZyeuxZOXvI+R/X14GRWoYVERNwvAiVg8vjyEibcNxDdb+mKjR4hFLGzpPUvDY4QgEvm8Nl7R02cNzXLr2WvlHVPXi/i+HrRP8IvUaQa6QZSZAYq5+PZ3r767w7PiD8IRXcLHzRUtkZCFgjGOEntHqtx7eO6kmkRpbkrvAlwe/PVU8yts9S+CASe8TaU2bSkIj6IG17fVYPjvDsJ7GxXaLnsXP5u8FsoS/HywuVzQprjZcRlWMH77bDWOmbcXblgcQ0QBVU6Q7qysUjFIZQuCPJ9w1tA8HjtzLe4/fT2mDikCluDlBUyp02SHdkUyB4V9o6/taJn3EMBUE5HNhayfUYJU1+HpXUdUCUEynzc6FJaHFYVtBgAcltjq+c6f1lzl0uGPI0mY156CdMZsr4ca2GYBFAVOOTSLP0xdDUHA1+8dgPlLYoET5trNOkdKTpgmTDqwgJ+ObcfYwUUYn5DXBEnYdEZFKUYVACKuBZiw6EMX174axW1vhfFRVgKlVmBBwWv/7VAHZgupBKx9x3piFE4dlkkCaGpqsvm/NiwIh+WEfN4YIpLYil5jwI/EHCff7v8+Ovuxr23Ns/70zvdJJAjXNxne//A0gS4KzjAq91RuiyBsss2vrwrhz8/WoCbE+M2pazDugAKeeT+CtR85YMVQshR2BZPyIBVj2XqF61+rwqqsxFEDfPSvsrBGwPCmTellz6qoCdoQDupjcPrQPKYPLWJwtcGagsDKDgnjCTAxpCh56lu21wwSFiC2ZE7HU7csw8CBorV+Dc0ZuYR0zUGTlatGGp/tVjVrIK7S+NYPR51x3560//uhxtY2TsZVU/pd21skeDOvuvEcdkK3VWS5tutzSRGoYpuTOHCAh99OWYtJQ3P4w9N74KetfZHLC8ioDSTNbopBDQO2KDCw2uA7R2dw6eFZVLkWuYLokgevzLgxA2HFkA6jWBR44gMXzW9GcP/7ISxvl8GAVsWQMgDOpVZgZmg4IcVe4T/tk/P+gHhccX3aYnCtpNltfu6ahqcjYXVcoaANyhK8GdjNjDgrCQtB2iva42KXtfyLOSmIup6M+umPvi81l4kJjd+HG7kSftEH4Gy/zi/FzX6gtk88JItfn7oW/aIWyUf74W9t1cFmt4gF86awSgnA00E++PCBPn5Y24HGYXkQAVmPOrNhH3f6gp8NOwwIxtqMwuMrXdz7XhjpD1282S4Bn4JSsYBByJWkC7/Dk/O+PiKRcJeUzzwEkP/LiZOVQ/N1sDNPbA1s5fUyswmFldSeXey0Z4/Bfvt5SKRsZYNg7zjboASZ6s77LTnhb+wo5M44mBh+XgIE/Mcx7fhRw0dYm5X4/kP98OBrUUBZOCHuBE0USKvnBSnPE/Yv4oe1HWjYrwhYIOMHcZzYwrCGoPkACAnAcQJvqL0g8fJ6hadWuXh2jTKL28NybdbcuerR1LRObkmI/OBJ+yqHz0XQ+lJldDAc5N+B3exh0+FqR+U3Fn8fvaz1ay3JYKxj7wJckfulCdP/SG7ocnjFHVLXlWlAC8DkBCIRi+/UbcRXxrbjxQ9cXPHInnj27TDgWjiuBXOQ9uxMknjBP84dWsD3Rnegdi8PrAlZn7oUPSqnFnBFssURgCsZkAxYcEFLcsiu8K3YAOZ2gJiZ+5KgA8IRFfUKBsYwtjbtY2s3gQhaOVIVi359dHZrujIJ0ptOygw861TKUN30q0m534L2An26EylCKRD0ceUlBvbV+GF8A847MoPH34lgzqN7YPHyEBDqCrrz4SgKOA5j1vAc/ntUFiP7e2BfIKsrJHrLflCFdgi8c0cGBZRNR9gyPM0wxhoEeRTa0TDHMttwSAmvaBaH+vYbjcUjNZqaNhsu2csgi7oZ34SQvwZbwJotOx7ba5+1APIC+w3w8YP4BpwxMofHlkXws9Y9sHSlWwK9SXVXOmLRsMVFh+TxtSOyGL6nv2WJ/iQ8gXMWjGsrx7lUPvxgx8F+TFXHHJXLFL9eNbv1d2Up7m2Au6hrOaHxdJbqWgg5ICjTkdwZrRPY2pIjVhA4aC8P349vxMkHF9D6VhhXPdEHry4PBaq7ZKOZgwlA2gJcFKiOBKC/cngAGpqQ1cEGWNFZK6CtOkjbY2O3PfsJqySR8e3qHMlD+s5+pB38acbBW1vvvmsRjyt+4r7XeP9DbwPTSFLuwWBLYOid6YOyTBAScEIW63IS9/wrhn8ujWLU3h5+WL8RYw8s4t0NDlasVbCGIJ1NttFxGXkDLFoRwt/fiGB5h8KB1Rb71PjGISGKhjhw00jsCNgdfnJLXSzWwIRjbh9RNB8697799Jz6uCL05lVxbLqYOP0bgEhCqj2gPQZjp89A2lyiB/TVuOy4DkwbmcfbHyn8eVEMD78RAQxAEQtHoNMZ8wyAojCRsBGNhzBdPnwDH7u3IZBEPq+ZwZaowrZyN6cRt5hJYRt2JeWL5tXInv2PRCJlezdgAEENuSmIP+rOHkIUmkOgWZAS0D5KEt09qlsTkJeIxAzOPzKHGaOy8I3ADS9EcdviCLycAMKWHYcJTCCl4BuAc7jLMfrH3jdW7utZ9xuCcZIKCfh5A21Zl7S36Ba4/zYdSuw4grQ2taHZjz3/GQDcNVYGABw/YxwxfZvAZ0E6FBTkSwULwg7Xbjvz1QZAQQASmHRwAbOOyvI+1cY++laY//FSlXp/tbRwqCBcXhhz7a9zj976QGUi2Ltu0lgwXwLGOU5Y9YFnkPeCiSRdpLo7wZYVRSkuLnZ4/xW+9LH//ewALktzYgmV1TbqZtaSwH8Q42xINSBwfzVKJ3yXTvTh8hiXbb3WYBgykbXMbAqCwEIO3Ycxc1Qex++bzb6+XjmrOuScn1x5zy/KPzR3bq1zCQCsnGooaBUGXz9pf9/w+WDMchwxAkTwCwaGWYNZEG3D59pGsBUv1+EqRxWz+s/h2Y9c/hkDXOZc2lxWupGoSwwQ5JzGwNkEngCh9gSV6oVsAGsRHJtJvJVbRuVDEYND0AVAAoIYZP0Ovyiexlr3zpEHZucvvv6t/bC86kydEQO0xtNhKebTpMdWdN7k52odtAE0u80PslYJV++77hSS9AVrMdmJqBi0RbFoghw1saAtPYS87WArAYeqHFXI+H+PXvroRZ9NwJWgl1RINACMu2CgVHyMBU8EeAwxhgM8CEI6wcRT2kqgwUHMzbwahDeYqE0QLTDaPk0Lb10pgC57RHPzGw5wI/ZkCRxumNZLi1Y4vIga0oVO57Y5mGzb+Vv+2nCAT3IawzbC0lg3qgi+RdErwQaXNml80gelfxMlQEcCFT0nfOljTZ9twJvHzvX1tlOqy2tsIgIhBisp97Ewe4NFPzD6MGwYYCIhCgB1gHkdCfGhsWYFpF2JdCrzMfMQbxWoT1s+LBHst6roieKHjz8CTGMNYy/JWAHJz0HRq50nwiSTAmgVlc1yxWtPHkXQZxJjqmXUuhFHwDCMb+CbkplhpmBk8ScnRSoyWkYKIqmEyBe8I6ovT7/yeQH88WzY6tWEdL0NjlbfQXsfbxUYOJCRarZb2kHIDEIqISorONyckF7sg8OkUCNgTVhCLoelZVjRvrJTZTcnJBpTXU5+LP71pMOJzCRYOpmBY1wl+gdxGQBt4WsLE5weySDiisNAAWYiIhkKSUAJ5DuK345e1vIrbk7IzyPgLei0JCGxhMo7HT9xDRzIwab1JsZ29tiVYXeR6uaERPXq/SAxyGfrsqaPXEMfoBobUJ82mJOkzaU6cM5O7Kc1jmZL4xk4FuCRYOzjOtINeoU+rpf9gjZCiGeL2lxVNfuxOzmZFNTUZP9/ANzja0uwAYDvO7YP3FgEBc9Dbu/2Lg9DSYUD9ZY2MzP83CVO4dl395HS348h9iXiAdpytYIAYDNW0nJIuTh80UOvld9r8/fYvXYh7O3dzVgexMYtcbU9W163tOH9/wHjZcEneLv4MAAAAABJRU5ErkJggg==" alt="BM" style="height:24px;" />
+      <span style="font-family:var(--font-display);font-size:.9rem;">Beirut Media News</span>
+    </div>
+  </div>
+  <div class="article-body" id="articleBody"></div>
+</div>
+
+<script>
+var currentArticleEl = null;
+
+function renderArticle() {
+  if(!currentArticleEl) return;
+  const el = currentArticleEl;
+  const lang = document.documentElement.dataset.lang || 'en';
+  const isAr = lang === 'ar';
+  const title = isAr ? (el.dataset.titleAr || el.dataset.titleEn || '') : (el.dataset.titleEn || el.dataset.titleAr || '');
+  const snippet = isAr ? (el.dataset.snippetAr || el.dataset.snippetEn || '') : (el.dataset.snippetEn || el.dataset.snippetAr || '');
+  const cat = isAr ? (el.dataset.catAr || el.dataset.catEn || '') : (el.dataset.catEn || el.dataset.catAr || '');
+  const imgUrl = el.dataset.img || '';
+  const sourceUrl = el.dataset.link || '';
+  const body = document.getElementById('articleBody');
+  const readLabel = isAr ? 'اقرأ الخبر كاملاً' : 'Read full story';
+
+  body.innerHTML = `
+    <div class="article-meta">${cat} • ${new Date().toLocaleDateString(isAr ? 'ar-LB' : 'en-US', {weekday:'long',year:'numeric',month:'long',day:'numeric'})}</div>
+    ${imgUrl ? `<img src="${imgUrl}" alt="" onerror="this.style.display='none'"/>` : ''}
+    <h1>${title}</h1>
+    <p>${snippet}</p>
+    ${sourceUrl ? `<a href="${sourceUrl}" target="_blank" rel="noopener" class="article-src">${readLabel} →</a>` : ''}
+  `;
+}
+
+function openArticle(el) {
+  currentArticleEl = el;
+  renderArticle();
+  document.getElementById('articleModal').classList.add('open');
+  window.scrollTo(0,0);
+}
+
+function closeArticle() {
+  document.getElementById('articleModal').classList.remove('open');
+  currentArticleEl = null;
+}
+</script>
+
+<script>
+(function(){
+  function setLang(lang){
+    document.documentElement.lang=lang;
+    document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+    document.documentElement.dataset.lang=lang;
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      el.textContent=lang==='ar'?el.dataset.ar:el.dataset.en;
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.setAttribute('aria-pressed',b.dataset.lang===lang?'true':'false');
+    });
+    try{localStorage.setItem('bm-lang',lang);}catch(e){}
+    if(typeof renderArticle === 'function') renderArticle();
+  }
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click',function(){setLang(b.dataset.lang);});
+  });
+  var initial='en';
+  try{var saved=localStorage.getItem('bm-lang');if(saved==='en'||saved==='ar')initial=saved;}catch(e){}
+  setLang(initial);
+})();
+</script>
+</body>
+</html>
