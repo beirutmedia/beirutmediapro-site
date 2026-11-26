@@ -123,6 +123,11 @@ as shown above. If no photo is available for a story, leave
 
 ## Relative timestamps — already built, don't re-implement
 
+**Hidden on the site since Nov 27, 2026 (Baker's request):** CSS sets
+`.posted{display:none !important;}`. Keep writing the `<time>` elements
+anyway (they still feed `LAST_AUTO_UPDATE` conventions); don't un-hide them
+unless asked.
+
 The page already has the CSS (`.posted`, `.posted:empty{display:none;}`) and
 JS (`formatRelative(iso, lang)`, `refreshTimestamps()`, wired to a 60s
 `setInterval` and re-run inside `setLang()`) to turn

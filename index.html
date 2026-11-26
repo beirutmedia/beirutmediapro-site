@@ -38,9 +38,7 @@
   .cat::before{content:"";width:18px;height:2px;background:currentColor;}
   html[data-lang="ar"] .cat{letter-spacing:0;font-family:var(--font-body-ar);font-weight:700;font-size:.82rem;}
   .meta{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-dim);}
-  .posted{display:inline-block;font-family:var(--font-mono);font-size:.7rem;color:var(--ink-dim);margin-block-start:12px;}
-  .posted::before{content:"● ";color:var(--orange);font-size:.6rem;vertical-align:middle;}
-  .posted:empty{display:none;}
+  .posted{display:none !important;}
 
   /* top bar + header */
   .update-bar{background:var(--gold);color:#1a1300;padding:6px var(--edge);font-family:var(--font-mono);font-size:.72rem;text-align:center;letter-spacing:.02em;}
