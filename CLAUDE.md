@@ -146,3 +146,14 @@ another session to "once per day", was disabled after an abandoned run). If
 you're editing this repo from Claude Code and notice the site is stale, it's
 fine to just do a manual update — there's no conflict, you're both just
 writing commits to `main`.
+
+## Instagram reels on /productions (added Nov 27, 2026)
+
+- `worker.js` serves `/api/reels` (latest 12 reels of @beirut.media.pro via the
+  Instagram API with Instagram login, app "Beirut Media Publisher"), cached 1h;
+  everything else falls through to static assets.
+- Token: Worker secret `IG_TOKEN` (set in Cloudflare → Settings → Variables and
+  Secrets, NOT Build variables). A daily cron refreshes it and stores the fresh
+  one in KV `REELS_KV` (key `ig_token`), which takes priority over the secret.
+- If the endpoint returns `not_configured` or `upstream_4xx`, the token is
+  missing/expired: generate a new one in the app and re-set `IG_TOKEN`.

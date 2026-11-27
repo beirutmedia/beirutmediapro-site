@@ -8,7 +8,6 @@
     "run_worker_first": ["/api/*"]
   },
   // Daily refresh of the long-lived Instagram token (needs REELS_KV below).
-  "triggers": { "crons": ["17 3 * * *"] }
-  // To enable auto token refresh, create a KV namespace and add:
-  // "kv_namespaces": [{ "binding": "REELS_KV", "id": "<namespace id>" }]
+  "triggers": { "crons": ["17 3 * * *"] },
+  "kv_namespaces": [{ "binding": "REELS_KV", "id": "09e2c10f2b3f4758a16fbaf8e03b2ad7" }]
 }
