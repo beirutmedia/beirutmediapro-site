@@ -252,6 +252,25 @@
   .foot-row{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:.85rem; }
   .foot-row img{ height:22px; opacity:.9; }
   .foot-brand{ display:flex; align-items:center; gap:10px; }
+  /* Instagram reels (filled by /api/reels) */
+  .reels-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-block:28px 56px;}
+  @media (max-width:980px){.reels-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:640px){.reels-grid{grid-template-columns:repeat(2,1fr);gap:10px;}}
+  .reel-tile{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#0a1a24;cursor:pointer;border:1px solid rgba(255,255,255,.08);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s;}
+  .reel-tile:hover{transform:translateY(-6px);border-color:rgba(242,193,37,.45);box-shadow:0 26px 50px -24px rgba(242,193,37,.35);}
+  .reel-tile img,.reel-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .reel-tile video{opacity:0;transition:opacity .3s;}
+  .reel-tile.playing video{opacity:1;}
+  .reel-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(1,21,31,.92));pointer-events:none;}
+  .reel-tile .cap{position:absolute;inset-inline:14px;bottom:14px;z-index:1;font-size:.8rem;line-height:1.4;color:var(--on-dark);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .reel-tile .play{position:absolute;top:12px;inset-inline-end:12px;z-index:1;width:34px;height:34px;border-radius:50%;background:rgba(1,21,31,.55);backdrop-filter:blur(6px);display:grid;place-items:center;}
+  .reel-tile .play::before{content:"";border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent var(--gold);margin-inline-start:3px;}
+  .reels-follow{display:inline-flex;margin-block-start:10px;color:var(--gold);font-family:var(--font-mono);font-size:.85rem;}
+  .reel-lightbox{position:fixed;inset:0;z-index:300;background:rgba(1,10,15,.94);display:none;align-items:center;justify-content:center;padding:20px;}
+  .reel-lightbox.open{display:flex;}
+  .reel-lightbox video{max-height:88vh;max-width:min(92vw,500px);aspect-ratio:9/16;border-radius:18px;background:#000;}
+  .reel-lightbox .rl-close{position:absolute;top:18px;inset-inline-end:18px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-size:1.4rem;cursor:pointer;}
+  .reel-lightbox .rl-ig{position:absolute;bottom:22px;color:var(--gold);font-family:var(--font-mono);font-size:.85rem;}
 </style>
 </head>
 <body>
@@ -505,6 +524,47 @@
     }catch(e){}
     setLang(initial);
   })();
+</script>
+<div class="reel-lightbox" id="reelLightbox" role="dialog" aria-modal="true">
+  <button class="rl-close" aria-label="Close">&times;</button>
+  <video controls playsinline></video>
+  <a class="rl-ig" target="_blank" rel="noopener" data-en="Open on Instagram ↗" data-ar="افتح على إنستغرام ↗">Open on Instagram ↗</a>
+</div>
+<script>
+(function(){
+  var IG='https://www.instagram.com/beirut.media.pro/';
+  var strip=document.querySelector('#reel .filmstrip');
+  var head=document.querySelector('#reel .section-head p');
+  if(!strip) return;
+  var lb=document.getElementById('reelLightbox'), lbv=lb.querySelector('video'), lbig=lb.querySelector('.rl-ig');
+  function close(){lb.classList.remove('open');lbv.pause();lbv.removeAttribute('src');lbv.load();}
+  lb.querySelector('.rl-close').onclick=close;
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  fetch('/api/reels').then(function(r){return r.json();}).then(function(d){
+    if(!d||!d.reels||!d.reels.length) return;
+    var grid=document.createElement('div'); grid.className='reels-grid';
+    d.reels.forEach(function(m){
+      var t=document.createElement('div'); t.className='reel-tile'; t.tabIndex=0;
+      var img=document.createElement('img'); img.loading='lazy'; img.alt=''; if(m.thumb) img.src=m.thumb; t.appendChild(img);
+      var v=document.createElement('video'); v.muted=true; v.loop=true; v.playsInline=true; v.preload='none'; t.appendChild(v);
+      var pl=document.createElement('span'); pl.className='play'; t.appendChild(pl);
+      var c=document.createElement('div'); c.className='cap'; c.textContent=m.caption||''; t.appendChild(c);
+      t.addEventListener('mouseenter',function(){ if(m.video){ if(!v.src) v.src=m.video; v.play().then(function(){t.classList.add('playing');}).catch(function(){}); }});
+      t.addEventListener('mouseleave',function(){ v.pause(); t.classList.remove('playing'); });
+      function open(){ if(!m.video){ window.open(m.link,'_blank','noopener'); return; } lbv.src=m.video; lbig.href=m.link||IG; lb.classList.add('open'); lbv.play().catch(function(){}); }
+      t.addEventListener('click',open);
+      t.addEventListener('keydown',function(e){ if(e.key==='Enter') open(); });
+      grid.appendChild(t);
+    });
+    strip.replaceWith(grid);
+    if(head){ head.dataset.en='Latest reels, straight from our Instagram.'; head.dataset.ar='آخر الريلات، مباشرة من الإنستغرام تبعنا.';
+      head.textContent=document.documentElement.dataset.lang==='ar'?head.dataset.ar:head.dataset.en;
+      var a=document.createElement('a'); a.className='reels-follow'; a.href=IG; a.target='_blank'; a.rel='noopener';
+      a.dataset.en='@beirut.media.pro ↗'; a.dataset.ar='@beirut.media.pro ↗'; a.textContent='@beirut.media.pro ↗';
+      head.after(a); }
+  }).catch(function(){});
+})();
 </script>
 </body>
 </html>
