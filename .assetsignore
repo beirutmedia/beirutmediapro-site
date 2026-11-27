@@ -3,3 +3,5 @@ wrangler.jsonc
 CLAUDE.md
 .git
 .assetsignore
+.gitignore
+.wrangler
